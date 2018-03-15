@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <title>亲子小游戏</title>
+    <link rel="stylesheet" href="./css/index.css" />
+    <script>
+        window.onload = function () {
+            function refreshRem() {
+                var width = docEl.getBoundingClientRect().width;
+                rem = width / (BASE_WIDTH / ROOT_FONT_SIZE);
+                docEl.style.fontSize = rem + "px";
+            }
+            var tid = null, docEl = document.documentElement, BASE_WIDTH = 640, ROOT_FONT_SIZE = 100;
+            refreshRem();
+            window.addEventListener("resize", function () {
+                clearTimeout(tid);
+                tid = setTimeout(refreshRem, 200);
+            }, false);
+        }
+    </script>
+</head>
+
+<body>
+    <div class="loading">
+        <div class="loadingImg"></div>
+    </div>
+    <div class="home-page hide">
+        <div class="people">
+            <div class="boy"></div>
+            <div class="girl"></div>
+        </div>
+        <div class="devil"></div>
+        <div class="ball1"></div>
+        <div class="ball2"></div>
+        <div class="enter"></div>
+    </div>
+    <div class="gameBg hide">
+        <div class="logo">
+            <span></span>
+        </div>
+        <div class="start"></div>
+        <div id="connect"></div>
+        <div class="submit hide"></div>
+        <div class="retry hide"></div>
+        <div class="sort hide"></div>
+        <div class="mask hide"></div>
+        <div class="scorePanel hide">
+            <div class="PanelBg">
+                <div class="pet"></div>
+                <div class="score"></div>
+                <div class="outGame"></div>
+            </div>
+        </div>
+    </div>
+    <div class="sortPanel hide">
+        <div class="content"> </div>
+        <div class="close"></div>
+    </div>
+    <script src="./js/connect.min.js"></script>
+    <script>
+        const count = 2;
+        const host_url = "http://172.16.3.180:8085/wx/annual/";
+        initGame(count, host_url);
+    </script>
+</body>
+
+</html>
